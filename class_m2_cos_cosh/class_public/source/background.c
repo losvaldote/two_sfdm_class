@@ -440,16 +440,16 @@ int background_functions(
     pvecback[pba->index_bg_alpha_sfdm_1] = alpha_sfdm_1; // value of 0.5*log(Omega_sfdm)
     pvecback[pba->index_bg_rho_sfdm_1] = exp(alpha_sfdm_1)*rho_tot/(1.-exp(alpha_sfdm_1)-exp(alpha_sfdm_2)); // energy of the sfdm.
     pvecback[pba->index_bg_p_sfdm_1] = -cos_sfdm(pba,theta_sfdm_1)*pvecback[pba->index_bg_rho_sfdm_1]; // pressure of the sfdm
-    rho_m += pvecback[pba->index_bg_rho_sfdm_1];
-    rho_r += pvecback[pba->index_bg_rho_sfdm_1];
+    rho_m += pvecback[pba->index_bg_rho_sfdm_1] - 3.*pvecback[pba->index_bg_p_sfdm_1];
+    rho_r += 3.*pvecback[pba->index_bg_p_sfdm_1];
     /*SFDM2 quantities*/
     pvecback[pba->index_bg_theta_sfdm_2] = theta_sfdm_2; // value of the angular variable
     pvecback[pba->index_bg_y1_sfdm_2] = y1_sfdm_2; // value of the potential variable
     pvecback[pba->index_bg_alpha_sfdm_2] = alpha_sfdm_2; // value of 0.5*log(Omega_sfdm)
     pvecback[pba->index_bg_rho_sfdm_2] = exp(alpha_sfdm_2)*rho_tot/(1.-exp(alpha_sfdm_1)-exp(alpha_sfdm_2)); // energy of the sfdm.
     pvecback[pba->index_bg_p_sfdm_2] = -cos_sfdm(pba,theta_sfdm_2)*pvecback[pba->index_bg_rho_sfdm_2]; // pressure of the sfdm
-    rho_m += pvecback[pba->index_bg_rho_sfdm_2];
-    rho_r += pvecback[pba->index_bg_rho_sfdm_2];
+    rho_m += pvecback[pba->index_bg_rho_sfdm_2] - 3.*pvecback[pba->index_bg_p_sfdm_2];
+    rho_r += 3.*pvecback[pba->index_bg_p_sfdm_2];
     /*Total quantities*/
     rho_tot += pvecback[pba->index_bg_rho_sfdm_1]+pvecback[pba->index_bg_rho_sfdm_2];
     p_tot += pvecback[pba->index_bg_p_sfdm_1]+pvecback[pba->index_bg_p_sfdm_2];
@@ -466,8 +466,8 @@ int background_functions(
     pvecback[pba->index_bg_alpha_sfdm_1] = alpha_sfdm_1; // value of 0.5*log(Omega_sfdm)
     pvecback[pba->index_bg_rho_sfdm_1] = exp(alpha_sfdm_1)*rho_tot/(1.-exp(alpha_sfdm_1)); // energy of the sfdm.
     pvecback[pba->index_bg_p_sfdm_1] = -cos_sfdm(pba,theta_sfdm_1)*pvecback[pba->index_bg_rho_sfdm_1]; // pressure of the sfdm
-    rho_m += pvecback[pba->index_bg_rho_sfdm_1];
-    rho_r += pvecback[pba->index_bg_rho_sfdm_1];
+    rho_m += pvecback[pba->index_bg_rho_sfdm_1] - 3.*pvecback[pba->index_bg_p_sfdm_1];
+    rho_r += 3.*pvecback[pba->index_bg_p_sfdm_1];
     rho_tot += pvecback[pba->index_bg_rho_sfdm_1];
     p_tot += pvecback[pba->index_bg_p_sfdm_1];
   }
@@ -481,8 +481,8 @@ int background_functions(
     pvecback[pba->index_bg_alpha_sfdm_2] = alpha_sfdm_2; // value of 0.5*log(Omega_sfdm)
     pvecback[pba->index_bg_rho_sfdm_2] = exp(alpha_sfdm_2)*rho_tot/(1.-exp(alpha_sfdm_2)); // energy of the sfdm.
     pvecback[pba->index_bg_p_sfdm_2] = -cos_sfdm(pba,theta_sfdm_2)*pvecback[pba->index_bg_rho_sfdm_2]; // pressure of the sfdm
-    rho_m += pvecback[pba->index_bg_rho_sfdm_2];
-    rho_r += pvecback[pba->index_bg_rho_sfdm_2];
+    rho_m += pvecback[pba->index_bg_rho_sfdm_2] - 3.*pvecback[pba->index_bg_p_sfdm_2];
+    rho_r += 3.*pvecback[pba->index_bg_p_sfdm_2];
     rho_tot += pvecback[pba->index_bg_rho_sfdm_2];
     p_tot += pvecback[pba->index_bg_p_sfdm_2];
   }
